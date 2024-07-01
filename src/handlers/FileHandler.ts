@@ -1,12 +1,11 @@
 import { InterfaceLogHandler } from "../interfaces/InterfaceLogHandler";
 import * as fs from "fs";
-import config from "../config";
 
 export class FileHandler implements InterfaceLogHandler {
     private filePath: string;
 
-    constructor() {
-        this.filePath = config.LogFilePath;
+    constructor(filePath: string) {
+        this.filePath = filePath;
     }
 
     writeLog(message: string): void {

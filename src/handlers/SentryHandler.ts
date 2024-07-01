@@ -1,10 +1,9 @@
 import { InterfaceLogHandler } from "../interfaces/InterfaceLogHandler";
 import * as Sentry from "@sentry/node";
-import config from "../config";
 
 export class SentryHandler implements InterfaceLogHandler {
-    constructor() {
-        // Sentry.init({ dsn: config.DSN });
+    constructor(dsn: string) {
+        // Sentry.init({ dsn: dsn});
     }
 
     writeLog(message: string): void {

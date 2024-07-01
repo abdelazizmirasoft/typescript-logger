@@ -1,6 +1,7 @@
 import { Logger } from "./Logger";
 import { FileHandler } from "./handlers/FileHandler";
 import { SentryHandler } from "./handlers/SentryHandler";
+import config from "./config";
 
 // Sample usage
 const logger = Logger.getInstance();
@@ -12,7 +13,7 @@ logger.warning("This is a warning message!");
 logger.error("This is an error message!");
 
 // Switch to file logging
-logger.setHandler(new FileHandler());
+logger.setHandler(new FileHandler(config.LogFilePath));
 
 logger.verbose("This is a verbose message logged to file.");
 logger.info("This is an info message logged to file.");
@@ -20,7 +21,7 @@ logger.warning("This is a warning message logged to file.");
 logger.error("This is an error message logged to file.");
 
 // Switch to Sentry logging
-logger.setHandler(new SentryHandler());
+logger.setHandler(new SentryHandler(config.DSN));
 
 logger.verbose("This is a verbose message logged to Sentry.");
 logger.info("This is an info message logged to Sentry.");
